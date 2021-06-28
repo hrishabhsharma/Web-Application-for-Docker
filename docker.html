@@ -1,0 +1,85 @@
+<style>
+body{
+background-image:url('https://buildvirtual.net/wp-content/uploads/2020/02/docker-background.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:100% 100%;
+}
+
+h1{
+  padding-left: 140px;	  
+  font-family: Brush Script MT;
+  font-size: 50px;	  
+}
+
+h2{
+  margin-left: 100px;
+  font-size: 20px;	  
+}	  
+
+input{
+  width: 22%;
+  height: 4%;	  
+  border: 2px solid blue;
+  border-radius: 4px;	  
+}
+
+input::placeholder{
+  text-align: center;
+}
+
+button{	
+  background-color: white;
+  border: none;	  
+  color: blue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin-left: 350px;	  
+}  
+
+button:hover {
+  background-color: #008CBA; /* Blue */
+  color: white;
+}  
+
+</style>
+
+<script>
+function lw() {
+
+   var i = document.getElementById("inp").value;
+   var xhr = new XMLHttpRequest();
+   xhr.open("GET", "http://192.168.56.104/cgi-bin/docker.py?x=" + i, true);
+
+   xhr.send();
+
+  // output from above url
+  xhr.onload = function() {
+  var output = xhr.responseText;
+  document.getElementById("id2").innerHTML = output;
+  }
+
+  //document.getElementById("id1").innerHTML = "hey";	
+
+}
+</script>
+
+<div id="f">
+<pre>	
+<h1 style='color:white'>Welcome to Docker WebApp!</h1></br>
+<h2 style='color:white'>[root@localhost ~]# <input id="inp" placeholder='Enter docker commands'/></h2>
+</br>
+<h3 style='color:white'>
+<div id="id2"></div> 
+</h3>
+</pre>
+
+<button onclick="lw()">Click</button>
+</div>
+
